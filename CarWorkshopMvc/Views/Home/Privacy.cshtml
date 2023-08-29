@@ -1,6 +1,40 @@
-﻿@{
+﻿@model IEnumerable<Person>
+
+@{
     ViewData["Title"] = "Privacy Policy";
+
+    var currentYear = DateTime.Now.Year;
+    var dayOfWeek = DateTime.Now.DayOfWeek;
+    var email = "lukasz.lopata.developer@gmail.com";
 }
 <h1>@ViewData["Title"]</h1>
 
 <p>Use this page to detail your site's privacy policy.</p>
+
+<p>It is @currentYear year.</p>
+
+@if(dayOfWeek == DayOfWeek.Sunday || dayOfWeek == DayOfWeek.Saturday)
+{
+    <p>It's weekend.</p>
+}
+else
+{
+    <p>It's not weekend yet.</p>
+}
+
+@switch (dayOfWeek)
+{
+    case DayOfWeek.Wednesday:
+        <p>Today is @dayOfWeek.</p>
+        break;
+    default:
+        <p>It is not Tuesday</p>
+        break;
+}
+
+<a href="mailto:@email">@email</a>
+
+@foreach(var person in Model)
+{
+    <p>@person.FirstName | @person.LastName</p>
+}

@@ -20,7 +20,13 @@ namespace CarWorkshopMvc.Controllers
 
         public IActionResult Privacy()
         {
-            return View();
+            var persons = new List<Person>() 
+            {
+                new Person() {FirstName = "Łukasz", LastName = "Łopata"},
+                new Person() {FirstName = "Adam", LastName = "Mickiewicz"},
+            };
+
+            return View(persons);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
