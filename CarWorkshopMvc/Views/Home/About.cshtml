@@ -1,0 +1,14 @@
+﻿@model Post
+
+<h1>@Model.Title</h1>
+
+<p>@Model.Description</p>
+
+<p>Tags:</p>
+<ul>
+    @foreach(var tag in Model.Tags)
+    {
+        <li>@tag</li>
+    }
+</ul>
+

@@ -29,6 +29,19 @@ namespace CarWorkshopMvc.Controllers
             return View(persons);
         }
 
+        public IActionResult About()
+        {
+            var post = new Post();
+            post.Title = "Katharsis HTTP Library";
+            post.Description = "Following post describees how to use mentioned library.";
+            post.Tags = new List<string>()
+            {
+                "HTTP", "Katharsis", "Requests"
+            };
+
+            return View(post);
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
