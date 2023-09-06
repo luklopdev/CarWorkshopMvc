@@ -1,9 +1,19 @@
+using CarWorkshop.Infrastrucuture.Persistence;
+using Microsoft.EntityFrameworkCore;
+using CarWorkshop.Infrastrucuture.Extensions;
+using CarWorkshop.Infrastrucuture.Seeders;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
+
+var scope = app.Services.CreateScope();
+var carWorkshopSeeder = scope.ServiceProvider.GetRequiredService<CarWorkshopSeeder>();
+await carWorkshopSeeder.SeedAsync();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

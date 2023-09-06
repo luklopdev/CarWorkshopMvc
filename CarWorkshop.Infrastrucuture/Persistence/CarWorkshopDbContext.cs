@@ -11,9 +11,9 @@ namespace CarWorkshop.Infrastrucuture.Persistence
     {
         public DbSet<Domain.Entities.CarWorkshop> CarWorkshops { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public CarWorkshopDbContext(DbContextOptions<CarWorkshopDbContext> options) : base(options)
         {
-            optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=CarWorkshopDB;Trusted_Connection=True;");
+            
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

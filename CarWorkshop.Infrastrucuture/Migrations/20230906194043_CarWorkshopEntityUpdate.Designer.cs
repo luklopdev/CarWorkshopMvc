@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarWorkshop.Infrastrucuture.Migrations
 {
     [DbContext(typeof(CarWorkshopDbContext))]
-    [Migration("20230830193733_Init")]
-    partial class Init
+    [Migration("20230906194043_CarWorkshopEntityUpdate")]
+    partial class CarWorkshopEntityUpdate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,6 +32,9 @@ namespace CarWorkshop.Infrastrucuture.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("About")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
