@@ -1,0 +1,21 @@
+﻿using CarWorkshop.Domain.Interfaces;
+using CarWorkshop.Infrastrucuture.Persistence;
+
+namespace CarWorkshop.Infrastrucuture.Repositories
+{
+    public class CarWorkshopRepository : ICarWorkshopRepository
+    {
+        private readonly CarWorkshopDbContext _dbContext;
+
+        public CarWorkshopRepository(CarWorkshopDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
+        public async Task CreateAsync(Domain.Entities.CarWorkshop carWorkshop)
+        {
+            _dbContext.Add(carWorkshop);
+            await _dbContext.SaveChangesAsync();
+        }
+    }
+}
